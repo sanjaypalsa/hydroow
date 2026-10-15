@@ -1,0 +1,214 @@
+/* ==========================================================================
+   Hydroow site-wide product search overlay
+   Used by js/site-search.js. Accent: #0a58ca
+   ========================================================================== */
+
+.hydroow-search-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 99999;
+    display: none;
+    padding: 8vh 16px 32px;
+    background: rgba(9, 18, 38, 0.72);
+    -webkit-backdrop-filter: blur(2px);
+    backdrop-filter: blur(2px);
+    overflow-y: auto;
+    box-sizing: border-box;
+}
+
+.hydroow-search-overlay.is-open {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    animation: hydroow-search-fade 0.15s ease-out;
+}
+
+@keyframes hydroow-search-fade {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+.hydroow-search-panel {
+    position: relative;
+    width: 100%;
+    max-width: 720px;
+    max-height: 80vh;
+    display: flex;
+    flex-direction: column;
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 24px 60px rgba(0, 0, 0, 0.35);
+    padding: 22px;
+    box-sizing: border-box;
+}
+
+/* Close button ------------------------------------------------------------ */
+
+.hydroow-search-close {
+    position: absolute;
+    top: 10px;
+    right: 12px;
+    width: 34px;
+    height: 34px;
+    padding: 0;
+    border: 0;
+    border-radius: 50%;
+    background: #f1f5f9;
+    color: #334155;
+    font-size: 22px;
+    line-height: 1;
+    cursor: pointer;
+    transition: background 0.15s ease, color 0.15s ease;
+}
+
+.hydroow-search-close:hover,
+.hydroow-search-close:focus {
+    background: #0a58ca;
+    color: #ffffff;
+    outline: none;
+}
+
+/* Input ------------------------------------------------------------------- */
+
+.hydroow-search-input {
+    width: 100%;
+    padding: 14px 16px;
+    margin: 0 0 14px;
+    font-size: 16px;
+    font-family: inherit;
+    color: #11233f;
+    background: #ffffff;
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+    box-sizing: border-box;
+    transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.hydroow-search-input::placeholder {
+    color: #94a3b8;
+}
+
+.hydroow-search-input:focus {
+    outline: none;
+    border-color: #0a58ca;
+    box-shadow: 0 0 0 3px rgba(10, 88, 202, 0.18);
+}
+
+/* Results ----------------------------------------------------------------- */
+
+.hydroow-search-results {
+    flex: 1 1 auto;
+    min-height: 60px;
+    max-height: calc(80vh - 150px);
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    margin: 0;
+    padding: 0 4px 0 0;
+}
+
+.hydroow-search-item {
+    display: block;
+    padding: 12px 14px;
+    border-radius: 8px;
+    border-bottom: 1px solid #eef2f7;
+    text-decoration: none;
+    color: inherit;
+    transition: background 0.12s ease, box-shadow 0.12s ease;
+}
+
+.hydroow-search-item:last-child {
+    border-bottom: 0;
+}
+
+.hydroow-search-item:hover,
+.hydroow-search-item:focus {
+    background: #f1f6ff;
+    box-shadow: inset 3px 0 0 #0a58ca;
+    outline: none;
+}
+
+.hydroow-search-name {
+    display: block;
+    font-size: 15px;
+    font-weight: 700;
+    color: #11233f;
+    line-height: 1.35;
+    word-break: break-word;
+}
+
+.hydroow-search-meta {
+    display: block;
+    margin-top: 2px;
+}
+
+.hydroow-search-brand {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: #0a58ca;
+    background: #e7efff;
+    border-radius: 4px;
+    padding: 2px 7px;
+    margin-right: 6px;
+}
+
+.hydroow-search-model {
+    display: inline-block;
+    font-size: 12px;
+    color: #64748b;
+}
+
+.hydroow-search-desc {
+    display: block;
+    margin-top: 4px;
+    font-size: 13px;
+    color: #64748b;
+    line-height: 1.45;
+}
+
+.hydroow-search-hint {
+    padding: 22px 10px;
+    text-align: center;
+    font-size: 14px;
+    color: #64748b;
+}
+
+/* Scrollbar (WebKit) ------------------------------------------------------ */
+
+.hydroow-search-results::-webkit-scrollbar {
+    width: 8px;
+}
+
+.hydroow-search-results::-webkit-scrollbar-thumb {
+    background: #c7d2e0;
+    border-radius: 8px;
+}
+
+.hydroow-search-results::-webkit-scrollbar-thumb:hover {
+    background: #a9b8cc;
+}
+
+/* Responsive -------------------------------------------------------------- */
+
+@media (max-width: 600px) {
+    .hydroow-search-overlay {
+        padding: 6vh 12px 24px;
+    }
+
+    .hydroow-search-panel {
+        padding: 16px;
+        border-radius: 10px;
+        max-height: 86vh;
+    }
+
+    .hydroow-search-input {
+        padding: 12px 14px;
+        font-size: 15px;
+    }
+
+    .hydroow-search-results {
+        max-height: calc(86vh - 135px);
+    }
+}
